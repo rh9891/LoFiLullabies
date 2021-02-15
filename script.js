@@ -37,3 +37,23 @@ function loadSong(song) {
   audio.src = `music/${song}.mp3`;
   cover.src = `images/covers/${song}.jpg`;
 }
+
+// Function to play song.
+function playSong() {
+  musicContainer.classList.add("play");
+  playButton.querySelector("i.fas").classList.remove("fa-play");
+  playButton.querySelector("i.fas").classList.add("fa-pause");
+
+  audio.play();
+}
+
+// Event listeners.
+playButton.addEventListener("click", () => {
+  const isPlaying = musicContainer.classList.contains("play");
+
+  if (isPlaying) {
+    pauseSong();
+  } else {
+    playSong();
+  }
+});

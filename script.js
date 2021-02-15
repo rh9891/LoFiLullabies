@@ -47,6 +47,15 @@ function playSong() {
   audio.play();
 }
 
+// Function to play song.
+function pauseSong() {
+  musicContainer.classList.remove("play");
+  playButton.querySelector("i.fas").classList.add("fa-play");
+  playButton.querySelector("i.fas").classList.remove("fa-pause");
+
+  audio.pause();
+}
+
 // Event listeners.
 playButton.addEventListener("click", () => {
   const isPlaying = musicContainer.classList.contains("play");

@@ -47,7 +47,7 @@ function playSong() {
   audio.play();
 }
 
-// Function to play song.
+// Function to pause song.
 function pauseSong() {
   musicContainer.classList.remove("play");
   playButton.querySelector("i.fas").classList.add("fa-play");
@@ -56,7 +56,20 @@ function pauseSong() {
   audio.pause();
 }
 
-// Event listeners.
+// Function to play previous song.
+function playPrevSong() {
+  songIndex--;
+
+  if (songIndex < 0) {
+    songIndex = songs.length - 1;
+  }
+
+  loadSong(songs[songIndex]);
+
+  playSong();
+}
+
+// Event listener to play and/or pause song.
 playButton.addEventListener("click", () => {
   const isPlaying = musicContainer.classList.contains("play");
 
@@ -66,3 +79,9 @@ playButton.addEventListener("click", () => {
     playSong();
   }
 });
+
+// Event listener to change song to previous song.
+prevButton.addEventListener("click", playPrevSong);
+
+// Event listener to change song to next song.
+nextButton.addEventListener("click", playNextSong);

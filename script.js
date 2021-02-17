@@ -39,25 +39,25 @@ function loadSong(song) {
 }
 
 // Function to play song.
-function playSong() {
+playSong = () => {
   musicContainer.classList.add("play");
   playButton.querySelector("i.fas").classList.remove("fa-play");
   playButton.querySelector("i.fas").classList.add("fa-pause");
 
   audio.play();
-}
+};
 
 // Function to pause song.
-function pauseSong() {
+pauseSong = () => {
   musicContainer.classList.remove("play");
   playButton.querySelector("i.fas").classList.add("fa-play");
   playButton.querySelector("i.fas").classList.remove("fa-pause");
 
   audio.pause();
-}
+};
 
 // Function to play previous song.
-function playPrevSong() {
+playPrevSong = () => {
   songIndex--;
 
   if (songIndex < 0) {
@@ -67,10 +67,10 @@ function playPrevSong() {
   loadSong(songs[songIndex]);
 
   playSong();
-}
+};
 
 // Function to play next song.
-function playNextSong() {
+playNextSong = () => {
   songIndex++;
 
   if (songIndex > songs.length - 1) {
@@ -80,14 +80,14 @@ function playNextSong() {
   loadSong(songs[songIndex]);
 
   playSong();
-}
+};
 
 // Function to update the time/progress of the song via the progress bar.
-function updateProgress(event) {
+updateProgress = (event) => {
   const { duration, currentTime } = event.srcElement;
   const progressPercent = (currentTime / duration) * 100;
   progress.style.width = `${progressPercent}%`;
-}
+};
 
 // Function to set the progress of song when clicking on progress bar.
 function setProgress(event) {

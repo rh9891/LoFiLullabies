@@ -26,7 +26,7 @@ const songs = [
 ];
 
 // Keeps track of song.
-let songIndex = 2;
+let songIndex = 0;
 
 // Function to load song details into DOM initially.
 loadSong(songs[songIndex]);
@@ -62,6 +62,19 @@ function playPrevSong() {
 
   if (songIndex < 0) {
     songIndex = songs.length - 1;
+  }
+
+  loadSong(songs[songIndex]);
+
+  playSong();
+}
+
+// Function to play next song.
+function playNextSong() {
+  songIndex++;
+
+  if (songIndex > songs.length - 2) {
+    songIndex = 0;
   }
 
   loadSong(songs[songIndex]);

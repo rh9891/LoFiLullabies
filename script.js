@@ -120,3 +120,6 @@ audio.addEventListener("timeupdate", updateProgress);
 
 // Event listener to set the progress of song when clicking on progress bar.
 progressContainer.addEventListener("click", setProgress);
+
+// Event listener for when the song ends.
+audio.addEventListener("ended", playNextSong);

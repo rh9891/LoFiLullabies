@@ -73,13 +73,20 @@ function playPrevSong() {
 function playNextSong() {
   songIndex++;
 
-  if (songIndex > songs.length - 2) {
+  if (songIndex > songs.length - 1) {
     songIndex = 0;
   }
 
   loadSong(songs[songIndex]);
 
   playSong();
+}
+
+// Function to update the time/progress of the song via the progress bar.
+function updateProgress(event) {
+  const { duration, currentTime } = event.srcElement;
+  const progressPercent = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
 }
 
 // Event listener to play and/or pause song.
@@ -98,3 +105,6 @@ prevButton.addEventListener("click", playPrevSong);
 
 // Event listener to change song to next song.
 nextButton.addEventListener("click", playNextSong);
+
+// Event listener to update the time/progress of the song.
+audio.addEventListener("timeupdate", updateProgress);
